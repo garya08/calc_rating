@@ -1,0 +1,322 @@
+:root {
+    --main-clr: #00822b;
+    --light-grey: #F4F4F4;
+    --black: #333;
+    --border: #999;
+    --dark-bg: #00551D;
+    --light-bg: #00551c59;
+    --white: snow;
+    --orange: #d7ff00;
+    --yellow: #ffa800;
+}
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
+    outline: none;
+}
+body {
+    background-color: var(--light-grey);
+    color: var(--black);
+}
+h1,h2,h3,h4 {
+    text-align: center;
+    color: var(--main-clr);
+}
+hr {
+    width: 100%;
+    height: 3px;
+    border: none;
+    background-color: var(--main-clr);
+}
+/* ==== INPUT ==== */
+input {
+    font-size: 20px;
+    padding: 5px;
+    width: 60px;
+    border: 2px solid #999;
+    border-radius: 9px;
+    background-color: var(--white);
+    line-height: 100%;
+    height: 40px;
+}
+input:disabled {
+    background-color: #ddd;
+}
+input:focus {
+    border-color: #312efc;
+}
+input.wrong,
+input.wrong:focus {
+    border-color: red;
+}
+
+/* ==== LABEL ==== */
+label {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    
+    position: relative;
+    width: 150px;
+    color: var(--yellow);
+    font-size: 22px;
+}
+label.wrong:after {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2px 5px;
+    content: '❗';
+    position: absolute;
+    top: -30px;
+    left: 90%;
+    width: auto;
+    height: 30px;
+    background-color: #F08080;
+    color: #8B0000;
+    font-size: 14px;
+    font-weight: 700;
+    border: 1px solid #8B0000;
+    border-radius: 10px 10px 10px 0;
+    z-index: 10;
+}
+
+/* ==== BUTTONS ==== */
+.btn {
+    max-height: 40px;
+	padding: 10px 25px;
+	background: var(--main-clr);
+	border: none;
+	border-radius: 10px;
+	color: var(--white);
+    font-weight: 700;
+    font-size: 18px;
+	box-shadow: 0 5px 10px rgba(0, 0, 0, .05);
+	transition: all 100ms linear;
+	cursor: pointer;
+}
+.btn:active {
+	transform: scale(.95);
+}
+.btn:disabled {
+	background: var(--main-light);
+	cursor: not-allowed;
+}
+
+
+
+/* -------------- STYLES BLOC ---------------- */
+.wrapper {
+    padding: 30px 0 0; 
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+.container {
+    max-width: 1230px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 5px 15px;
+}
+.bloc__inner {
+    display: flex;
+    justify-content: center;
+}
+.box {
+    width: 75%;
+    display: flex;
+    justify-content: space-between;
+    margin: 0 auto;
+}
+.red {
+    color: #ff0000;
+    font-weight: 700;
+}
+.blue {
+    color: #0000ff;
+    font-weight: 700;
+}
+.yellow {
+    color: var(--orange);
+    font-weight: 700;
+}
+
+
+/* ----------------------------- BLOC_INFO --------------------------- */
+.bloc--info {
+    margin-top: auto;
+    order: 1;
+    padding: 10px 0 40px;
+    background-color: var(--main-clr);
+    color: var(--white);
+}
+.bloc--info h2 {
+    margin-bottom: 10px;
+    color: var(--white);
+}
+.bloc--info table {
+    border-collapse: collapse;
+}
+.bloc--info th {
+    font-weight: bold;
+    background-color: var(--dark-bg);
+    padding: 5px 10px;
+}
+.bloc--info td {
+    background-color: var(--light-bg);
+    padding: 5px 10px;
+}
+.bloc--info th:first-child {
+    border-top-left-radius: 15px;
+}
+.bloc--info th:last-child {
+    border-top-right-radius: 15px;
+}
+.bloc--info tr:last-child td:first-child {
+    border-bottom-left-radius: 15px;
+}
+.bloc--info tr:last-child td:last-child {
+    border-bottom-right-radius: 15px;
+}
+
+
+
+/* ----------------------------- BLOC_PARAMS --------------------------- */
+.bloc__inner--params {
+    padding: 15px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+.input_group {
+    margin: 0 auto;
+    width: 50%;
+    position: relative;
+}
+.label--input {
+    width: auto;
+    color: var(--border);
+    position: absolute;
+    top: 50%;
+    left: 10px;
+    transform: translateY(-50%);
+    transition: all .2s ease;
+    pointer-events: none;
+}
+.input_group input:focus + .label--input,
+.input_group input:not(:placeholder-shown) + .label--input {
+    margin-top: -20px;
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--main-clr);
+}
+.input_group input {
+    border: 0;
+    border-bottom: 1px solid var(--border-clr);
+    border-radius: 0;
+    height: 40px;
+    width: 100%;
+    padding: 5px 10px;
+}
+.input_group input::placeholder {
+    opacity: 0;
+}
+.input_group input:focus {
+    outline: none;
+    border-bottom: 2px solid var(--main-clr);
+}
+
+
+/* ----------------------------- RESULT --------------------------- */
+.bloc__inner--result {
+    padding: 10px 0;
+    margin: 0 auto;
+    width: 50%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+}
+.result_label {
+    width: auto;
+    font-weight: 700;
+}
+.result_input {
+    width: 100%;
+    max-width: 100%;
+    pointer-events: none;
+    border: 0;
+    border-bottom: 2px solid var(--main-clr);
+    border-radius: 0;
+}
+.result_input:disabled {
+    background-color: var(--white);
+}
+
+
+
+/* ----------------------------- BLOC_SERVICE --------------------------- */
+.bloc__inner--service,
+.bloc__inner--clients {
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 20px;
+}
+.table_grid {
+    display: grid;
+}
+/* ==== SERVICE ==== */
+.bloc__inner--service .table_grid {
+    grid-template-columns: auto repeat(2, 1fr);
+    column-gap: 15px;
+    row-gap: 5px;
+}
+.bloc__inner--service .table_head {
+    grid-column: 2/4;
+
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 15px;
+    font-weight: 700;
+    text-align: center;
+}
+.table_labels {
+    display: grid;
+    grid-template-rows: repeat(4, 1fr);
+    font-weight: 700;
+    row-gap: 5px;
+}
+.table_labels span {
+    display: flex;
+    align-items: center;
+    justify-content: right;
+}
+.confirm_reviews {
+    display: grid;
+    grid-template-rows: repeat(4, 1fr);
+    row-gap: 5px;
+}
+.cancel_reviews {
+    display: grid;
+    grid-template-rows: repeat(4, 1fr);
+    row-gap: 5px;
+
+}
+
+/* ==== CLIENTS ==== */
+.bloc__inner--clients .table_grid {
+    grid-template-columns: 1fr;
+    row-gap: 5px;
+}
+.bloc__inner--clients .table_head {
+    display: grid;
+    font-weight: 700;
+    text-align: center;
+}
+.client_reviews {
+    margin: 0 auto;
+    display: grid;
+    row-gap: 5px;
+}

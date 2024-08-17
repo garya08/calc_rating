@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="calc/images/favicon.jpeg" type="image/x-icon">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="calc/style.css">
+    <title>Калькулятор рейтинга</title>
+</head>
+<body>
+    <div class="wrapper">
+        
+        <h1>Калькулятор рейтинга</h1>
+        <!-- информационный блок -->
+        <div class="bloc bloc--info">
+            <div class="container">
+                <h2>Константы для вычислений</h2>
+                <div class="bloc__inner">
+                    <table>
+                        <tr>
+                            <th>Правило</th>
+                            <th>Значения</th>
+                        </tr>
+                        <tr>
+                            <td>Рейтинг ресторана определяется исходя из оценок за последние <span class="blue">M</span> месяцев</td>
+                            <td class="blue">M = 3</td>
+                        </tr>
+                        <tr>
+                            <td>Оценки пользователей в <span class="red">K</span> раз сильнее</td>
+                            <td class="red">K =	5</td>
+                        </tr>
+                        <tr>
+                            <td>Округляем до <span class="yellow">2</span> знаков после запятой</td>
+                            <td class="yellow">ROUND 2</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- блок параметров -->
+        <div class="bloc bloc--params">
+            <div class="container">
+                <div class="bloc__inner bloc__inner--params">
+                    <div class="input_group">
+                        <input type="text" id="avg" placeholder="">
+                        <label class="label--input">Средняя сумма чека</label>
+                    </div>
+                    <div class="input_group">
+                        <input type="text" id="count_auto" placeholder="">
+                        <label class="label--input">Кол-во заказов с автоматической оценкой</label>
+                    </div>
+                    <div class="input_group">
+                        <input type="text" id="count_client" placeholder="">
+                        <label class="label--input">Кол-во заказов с оценкой от клиента</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- результирующий блок -->
+         <hr>
+        <div class="bloc result">
+            <div class="container">
+                <div class="bloc__inner bloc__inner--result">
+                    <label class="result_label">Рейтинг
+                        <input class="result_input" type="text" name="result" id="result" disabled>
+                    </label>
+                    <button id="btn_result" class="btn" type="button">Calculate</button>
+                </div>
+            </div>
+        </div>
+        <hr>
+
+        <!-- автоматические оценки сервиса + оценки клиентов -->
+         <div class="bloc bloc--reviews">
+            <div class="container">
+                <div class="box">
+                    <!-- автоматические оценки сервиса -->
+                    <div class="bloc__inner bloc__inner--service">
+                        <h2>Автоматические оценки от сервиса</h2>
+                        <div class="table_grid">
+                            <div class="table_head">
+                                <span>Подтвеждение</span>
+                                <span>Отмена рестораном</span>
+                            </div>
+                            <div class="table_labels">
+                                <span>0-4 мин</span>
+                                <span>5-8 мин</span>
+                                <span>9-12 мин</span>
+                                <span>автоотмена</span>
+                            </div>
+                            <div class="confirm_reviews">
+                                <label>★★★★★<input class="service_review" type="text" data-value="5" disabled></label>
+                                <label>★★★★☆<input class="service_review" type="text" data-value="4" disabled></label>
+                                <label>★★★☆☆<input class="service_review" type="text" data-value="3" disabled></label>
+                            </div>
+                            <div class="cancel_reviews">
+                                <label>★★★★☆<input class="service_review" type="text" data-value="4" disabled></label>
+                                <label>★★★☆☆<input class="service_review" type="text" data-value="3" disabled></label>
+                                <label>★★☆☆☆<input class="service_review" type="text" data-value="2" disabled></label>
+                                <label>★☆☆☆☆<input class="service_review" type="text" data-value="1" disabled></label>
+                            </div>
+                        </div>
+                    </div>
+              
+                    <!-- оценки клиентов -->
+                    <div class="bloc__inner bloc__inner--clients">
+                        <h2>Клиентские отзывы</h2>
+                        <div class="table_grid">
+                            <div class="table_head">
+                                <span>Подтвержденные</span>
+                            </div>
+                            <div class="client_reviews">
+                                <label>★★★★★<input class="client_review" type="text" data-value="5" disabled></label>
+                                <label>★★★★☆<input class="client_review" type="text" data-value="4" disabled></label>
+                                <label>★★★☆☆<input class="client_review" type="text" data-value="3" disabled></label>
+                                <label>★★☆☆☆<input class="client_review" type="text" data-value="2" disabled></label>
+                                <label>★☆☆☆☆<input class="client_review" type="text" data-value="1" disabled></label>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+         </div>
+
+
+    </div>
+
+    <script src="calc/app.js"></script>
+</body>
+</html>
