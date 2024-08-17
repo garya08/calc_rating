@@ -24,6 +24,12 @@ h1,h2,h3,h4 {
     text-align: center;
     color: var(--main-clr);
 }
+h1 {
+    font-size: calc(24px + 8 * (100vw - 400px) / 800);
+}
+h2 {
+    font-size: calc(14px + 10 * (100vw - 400px) / 800);
+}
 hr {
     width: 100%;
     height: 3px;
@@ -32,7 +38,7 @@ hr {
 }
 /* ==== INPUT ==== */
 input {
-    font-size: 20px;
+    font-size: calc(12px + 8 * (100vw - 400px) / 800);
     padding: 5px;
     width: 60px;
     border: 2px solid #999;
@@ -61,7 +67,7 @@ label {
     position: relative;
     width: 150px;
     color: var(--yellow);
-    font-size: 22px;
+    font-size: calc(10px + 12 * (100vw - 400px) / 800);
 }
 label.wrong:after {
     display: flex;
@@ -76,7 +82,7 @@ label.wrong:after {
     height: 30px;
     background-color: #F08080;
     color: #8B0000;
-    font-size: 14px;
+    font-size: calc(9px + 5 * (100vw - 400px) / 800);
     font-weight: 700;
     border: 1px solid #8B0000;
     border-radius: 10px 10px 10px 0;
@@ -92,7 +98,7 @@ label.wrong:after {
 	border-radius: 10px;
 	color: var(--white);
     font-weight: 700;
-    font-size: 18px;
+    font-size:calc(12px + 6 * (100vw - 400px) / 800);
 	box-shadow: 0 5px 10px rgba(0, 0, 0, .05);
 	transition: all 100ms linear;
 	cursor: pointer;
@@ -163,10 +169,12 @@ label.wrong:after {
     font-weight: bold;
     background-color: var(--dark-bg);
     padding: 5px 10px;
+    font-size: calc(12px + 4 * (100vw - 400px) / 800);
 }
 .bloc--info td {
     background-color: var(--light-bg);
     padding: 5px 10px;
+    font-size: calc(12px + 4 * (100vw - 400px) / 800);
 }
 .bloc--info th:first-child {
     border-top-left-radius: 15px;
@@ -208,7 +216,7 @@ label.wrong:after {
 .input_group input:focus + .label--input,
 .input_group input:not(:placeholder-shown) + .label--input {
     margin-top: -20px;
-    font-size: 14px;
+    font-size: calc(10px + 4 * (100vw - 400px) / 800);
     font-weight: 700;
     color: var(--main-clr);
 }
@@ -242,6 +250,7 @@ label.wrong:after {
 .result_label {
     width: auto;
     font-weight: 700;
+    font-size: calc(14px + 8 * (100vw - 400px) / 800);
 }
 .result_input {
     width: 100%;
@@ -266,6 +275,10 @@ label.wrong:after {
 }
 .table_grid {
     display: grid;
+}
+.table_grid span {
+    white-space: nowrap;
+    font-size: calc(10px + 6 * (100vw - 400px) / 800);
 }
 /* ==== SERVICE ==== */
 .bloc__inner--service .table_grid {
@@ -302,7 +315,6 @@ label.wrong:after {
     display: grid;
     grid-template-rows: repeat(4, 1fr);
     row-gap: 5px;
-
 }
 
 /* ==== CLIENTS ==== */
@@ -319,4 +331,101 @@ label.wrong:after {
     margin: 0 auto;
     display: grid;
     row-gap: 5px;
+}
+/* -------------------------------- MEDIA --------------------------------------- */
+
+
+@media (max-width: 992px) {
+    .bloc--info {
+        padding: 5px 0 20px;
+    }
+    input {
+        width: 50px;
+        height: 25px;
+    }
+    .bloc__inner--params {
+        gap: 10px;
+    }
+    .input_group {
+        width: 75%;
+    }
+    .input_group input {
+        height: 20px;
+    }
+    .bloc__inner--result {
+        padding: 5px 0;
+        width: 75%;
+        gap: 10px;
+    }
+    hr {
+        height: 2px;
+    }
+    .container {
+        max-width: 700px;
+    }
+    .box {
+        width: 100%;
+    }
+}
+@media (max-width: 768px) {
+    hr {
+        height: 1px;
+    }
+    .container {
+        max-width: 500px;
+    }
+    .box {
+        flex-direction: column;
+        gap: 20px;
+    }
+    .bloc--info th {
+        padding: 3px 5px;
+    }
+    .bloc--info td {
+        padding: 3px 5px;
+    }
+    .bloc--info th:first-child {
+        border-top-left-radius: 7px;
+    }
+    .bloc--info th:last-child {
+        border-top-right-radius: 7px;
+    }
+    .bloc--info tr:last-child td:first-child {
+        border-bottom-left-radius: 7px;
+    }
+    .bloc--info tr:last-child td:last-child {
+        border-bottom-right-radius: 7px;
+    }
+    .btn {
+        max-height: 30px;
+        padding: 5px 10px;
+        border-radius: 8px;
+    }
+    .bloc__inner--service,
+    .bloc__inner--clients {
+        gap: 10px;
+    }
+    .table_labels,
+    .confirm_reviews,
+    .cancel_reviews,
+    .client_reviews {
+        row-gap: 1px;
+    }
+}
+@media (max-width: 600px) {
+    .box {
+        margin: 15px auto;
+        width: 75%;
+    }
+    label {
+        width: auto;
+    }
+    .bloc__inner--service .table_grid {
+        grid-template-columns: auto repeat(2, 1fr);
+        column-gap: 5px;
+    }
+    .client_reviews {
+        grid-template-columns: repeat(2, 1fr);
+        column-gap: 10px;
+    }
 }
