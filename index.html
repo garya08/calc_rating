@@ -47,15 +47,15 @@
             <div class="container">
                 <div class="bloc__inner bloc__inner--params">
                     <div class="input_group">
-                        <input type="text" id="avg" placeholder="" inputmode="numeric">
+                        <input type="text" id="avg" placeholder="" inputmode="numeric" tabindex="1">
                         <label class="label--input">Средняя сумма чека</label>
                     </div>
                     <div class="input_group">
-                        <input type="text" id="count_auto" placeholder="" inputmode="numeric">
+                        <input type="text" id="serviceCount" placeholder="" inputmode="numeric" tabindex="2">
                         <label class="label--input">Кол-во заказов с автоматической оценкой</label>
                     </div>
                     <div class="input_group">
-                        <input type="text" id="count_client" placeholder="" inputmode="numeric">
+                        <input type="text" id="clientCount" placeholder="" inputmode="numeric" tabindex="3">
                         <label class="label--input">Кол-во заказов с оценкой от клиента</label>
                     </div>
                 </div>
@@ -70,7 +70,7 @@
                     <label class="result_label">Рейтинг
                         <input class="result_input" type="text" name="result" id="result" disabled>
                     </label>
-                    <button id="btn_result" class="btn" type="button">Calculate</button>
+                    <button id="btn_result" class="btn" type="button" tabindex="16">Calculate</button>
                 </div>
             </div>
         </div>
@@ -95,15 +95,15 @@
                                 <span>автоотмена</span>
                             </div>
                             <div class="confirm_reviews">
-                                <label>★★★★★<input class="service_review" type="text" data-value="5" disabled value="0" inputmode="numeric"></label>
-                                <label>★★★★☆<input class="service_review" type="text" data-value="4" disabled value="0" inputmode="numeric"></label>
-                                <label>★★★☆☆<input class="service_review" type="text" data-value="3" disabled value="0" inputmode="numeric"></label>
+                                <label>★★★★★<input class="service_review" type="text" data-value="5" disabled value="0" inputmode="numeric" tabindex="4"></label>
+                                <label>★★★★☆<input class="service_review" type="text" data-value="4" disabled value="0" inputmode="numeric" tabindex="5"></label>
+                                <label>★★★☆☆<input class="service_review" type="text" data-value="3" disabled value="0" inputmode="numeric" tabindex="6"></label>
                             </div>
                             <div class="cancel_reviews">
-                                <label>★★★★☆<input class="service_review" type="text" data-value="4" disabled value="0" inputmode="numeric"></label>
-                                <label>★★★☆☆<input class="service_review" type="text" data-value="3" disabled value="0" inputmode="numeric"></label>
-                                <label>★★☆☆☆<input class="service_review" type="text" data-value="2" disabled value="0" inputmode="numeric"></label>
-                                <label>★☆☆☆☆<input class="service_review" type="text" data-value="1" disabled value="0" inputmode="numeric"></label>
+                                <label>★★★★☆<input class="service_review" type="text" data-value="4" disabled value="0" inputmode="numeric" tabindex="7"></label>
+                                <label>★★★☆☆<input class="service_review" type="text" data-value="3" disabled value="0" inputmode="numeric" tabindex="8"></label>
+                                <label>★★☆☆☆<input class="service_review" type="text" data-value="2" disabled value="0" inputmode="numeric" tabindex="9"></label>
+                                <label>★☆☆☆☆<input class="service_review" type="text" data-value="1" disabled value="0" inputmode="numeric" tabindex="10"></label>
                             </div>
                         </div>
                     </div>
@@ -116,11 +116,11 @@
                                 <span>Подтвержденные</span>
                             </div>
                             <div class="client_reviews">
-                                <label>★★★★★<input class="client_review" type="text" data-value="5" disabled value="0" inputmode="numeric"></label>
-                                <label>★★★★☆<input class="client_review" type="text" data-value="4" disabled value="0" inputmode="numeric"></label>
-                                <label>★★★☆☆<input class="client_review" type="text" data-value="3" disabled value="0" inputmode="numeric"></label>
-                                <label>★★☆☆☆<input class="client_review" type="text" data-value="2" disabled value="0" inputmode="numeric"></label>
-                                <label>★☆☆☆☆<input class="client_review" type="text" data-value="1" disabled value="0" inputmode="numeric"></label>
+                                <label>★★★★★<input class="client_review" type="text" data-value="5" disabled value="0" inputmode="numeric" tabindex="11"></label>
+                                <label>★★★★☆<input class="client_review" type="text" data-value="4" disabled value="0" inputmode="numeric" tabindex="12"></label>
+                                <label>★★★☆☆<input class="client_review" type="text" data-value="3" disabled value="0" inputmode="numeric" tabindex="13"></label>
+                                <label>★★☆☆☆<input class="client_review" type="text" data-value="2" disabled value="0" inputmode="numeric" tabindex="14"></label>
+                                <label>★☆☆☆☆<input class="client_review" type="text" data-value="1" disabled value="0" inputmode="numeric" tabindex="15"></label>
                             </div>
                         </div>
                     </div>

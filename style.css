@@ -8,6 +8,8 @@
     --white: snow;
     --orange: #d7ff00;
     --yellow: #ffa800;
+    --blue: #0000ff;
+    --red: #ff0000;
 }
 * {
     margin: 0;
@@ -115,7 +117,6 @@ label.wrong:after {
 }
 
 
-
 /* -------------- STYLES BLOC ---------------- */
 .wrapper {
     padding: 30px 0 0; 
@@ -140,11 +141,11 @@ label.wrong:after {
     margin: 0 auto;
 }
 .red {
-    color: #ff0000;
+    color: var(--red);
     font-weight: 700;
 }
 .blue {
-    color: #0000ff;
+    color: var(--blue);
     font-weight: 700;
 }
 .yellow {
@@ -255,7 +256,9 @@ label.wrong:after {
     font-size: calc(14px + 8 * (100vw - 400px) / 800);
 }
 .result_input {
+    font-weight: 800;
     width: 100%;
+    padding: 0 15px;
     max-width: 100%;
     pointer-events: none;
     border: 0;
@@ -334,9 +337,9 @@ label.wrong:after {
     display: grid;
     row-gap: 5px;
 }
+
+
 /* -------------------------------- MEDIA --------------------------------------- */
-
-
 @media (max-width: 992px) {
     .bloc--info {
         padding: 5px 0 20px;
