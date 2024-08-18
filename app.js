@@ -1,7 +1,20 @@
-const maxLength = 4;
-const K = 5; // коэффициент влияния клиентских отзывов
-const regEx = /\D/g;
+// ------------- КОНСТАНТЫ ------------- 
+const maxLength = 4,
+      K = 5, // коэффициент влияния клиентских отзывов
+      regEx = /\D/g;
 
+
+// ------------- ОСНОВНЫЕ ЭЛЕМЕНТЫ СТРАНИЦЫ -------------  
+// Кол-во оценок Клиентов и Сервиса, Средний чек, поле результата, список элементов оценок клиентов и сервиса
+const avgInputEl = document.querySelector('#avg'),
+      serviceCountEl = document.querySelector('#count_auto'),
+      clientCountEl = document.querySelector('#count_client'),
+      resultEl = document.querySelector('#result'),   // input результата
+      serviceReviewsEl = document.querySelectorAll('.service_review'),  // список input автоматические оценки
+      clientReviewsEl = document.querySelectorAll('.client_review');  // список input оценки клиентов
+
+      
+// ------------- СОБЫТИЯ СТРАНИЦЫ ------------- 
 // валидация ввода чисел во всех полях input на странице
 document.querySelectorAll('input').forEach((item) => {
     item.addEventListener('input', (e) => {
@@ -21,16 +34,8 @@ document.querySelectorAll('input').forEach((item) => {
 });
 
 
-const avg = document.querySelector('#avg'),
-      count_auto = document.querySelector('#count_auto'),
-      count_client = document.querySelector('#count_client');
 
-const result = document.querySelector('#result');   // input результата
-
-const autoList = document.querySelectorAll('.service_review');  // список input автоматические оценки
-const clientList = document.querySelectorAll('.client_review');  // список input оценки клиентов
-
-
+// ------------- ФУНКЦИИ ------------- 
 // функция отключения input если главное поле количества не заполнено или равно 0
 const toggleInputs = (countInput, inputsList) => 
     countInput.addEventListener('input', (e)=> {
@@ -45,10 +50,6 @@ const toggleInputs = (countInput, inputsList) =>
             }
         }
     })
-    
-toggleInputs(count_auto, autoList)
-toggleInputs(count_client, clientList)
-
 //функция для подсчета суммы всех полей input
 const summarize = function(list) {
     let sum = 0;
@@ -57,6 +58,7 @@ const summarize = function(list) {
     }
     return sum;
 }
+// функция для отслеживания ошибки превышения общего количества
 const wrongInputs = (inputsList, countInput) => inputsList.forEach((item) => {
     item.addEventListener('input', (e)=> {
         if(summarize(inputsList) > Number(countInput.value)) {
@@ -72,31 +74,35 @@ const wrongInputs = (inputsList, countInput) => inputsList.forEach((item) => {
         }
     })
 })
-
-wrongInputs(autoList, count_auto);
-wrongInputs(clientList, count_client);
-
 // функция перемножения количества оценок и баллов за оценку
 const calcReviews = (inputList) => {
     let sum = 0;
     inputList.forEach((item) => {
         if(item.value) sum += parseInt(item.value) * parseInt(item.dataset.value);
     })
-    
     return sum;
 }
-
-
-
 // вычисление рейтинга
 document.querySelector('#btn_result').addEventListener('click', () => {
-    let service = calcReviews(autoList) * parseInt(avg.value);
-    let client = K * calcReviews(clientList) * parseInt(avg.value);
+    let service = calcReviews(serviceReviewsEl) * parseInt(avgInputEl.value);
+    let client = K * calcReviews(clientReviewsEl) * parseInt(avgInputEl.value);
 
     let up =  service + client;
-    let down = parseInt(avg.value) * (parseInt(count_auto.value) + K * parseInt(count_client.value));
+    let down = parseInt(avgInputEl.value) * (parseInt(serviceCountEl.value) + K * parseInt(clientCountEl.value));
     
     let answer = up/down;
-    result.value = answer > 5 ? parseFloat('5').toFixed(2) : answer.toFixed(2);
+    resultEl.value = answer > 5 ? parseFloat('5').toFixed(2) : answer.toFixed(2);
 })
+
+
+
+// ------------- ВЫЗОВ НЕОБХОДИМЫХ ФУНКЦИЙ ------------- 
+toggleInputs(serviceCountEl, serviceReviewsEl)
+toggleInputs(clientCountEl, clientReviewsEl)
+
+wrongInputs(serviceReviewsEl, serviceCountEl);
+wrongInputs(clientReviewsEl, clientCountEl);
+
+
+
 
