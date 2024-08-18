@@ -351,8 +351,7 @@ label.wrong:after {
     .bloc__inner--params {
         gap: 15px;
     }
-    .input_group input:focus-visible + .label--input,
-    .input_group input:not(:placeholder-shown) + .label--input {
+    .input_group input:focus + .label--input {
         margin-top: -15px;
         font-size: calc(10px + 4 * (100vw - 400px) / 800);
         font-weight: 700;
