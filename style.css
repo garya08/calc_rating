@@ -438,3 +438,6 @@ label.wrong:after {
         column-gap: 10px;
     }
 }
+body {
+    background-color: red;
+}
