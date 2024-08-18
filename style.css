@@ -351,14 +351,14 @@ label.wrong:after {
     .bloc__inner--params {
         gap: 15px;
     }
-    .input_group input:target + .label--input,
+    .input_group input:focus-visible + .label--input,
     .input_group input:not(:placeholder-shown) + .label--input {
         margin-top: -15px;
         font-size: calc(10px + 4 * (100vw - 400px) / 800);
         font-weight: 700;
         color: var(--main-clr);
     }
-    .input_group input:target {
+    .input_group input:focus-visible {
         outline: none;
         border-bottom: 2px solid var(--main-clr);
     }
