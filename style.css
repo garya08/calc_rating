@@ -25,10 +25,10 @@ h1,h2,h3,h4 {
     color: var(--main-clr);
 }
 h1 {
-    font-size: calc(24px + 8 * (100vw - 400px) / 800);
+    font-size: calc(24px + 4 * (100vw - 400px) / 800);
 }
 h2 {
-    font-size: calc(14px + 10 * (100vw - 400px) / 800);
+    font-size: calc(14px + 4 * (100vw - 400px) / 800);
 }
 hr {
     width: 100%;
@@ -67,7 +67,7 @@ label {
     position: relative;
     width: 150px;
     color: var(--yellow);
-    font-size: calc(10px + 12 * (100vw - 400px) / 800);
+    font-size: calc(10px + 8 * (100vw - 400px) / 800);
 }
 label.wrong:after {
     display: flex;
@@ -82,7 +82,7 @@ label.wrong:after {
     height: 30px;
     background-color: #F08080;
     color: #8B0000;
-    font-size: calc(9px + 5 * (100vw - 400px) / 800);
+    font-size: calc(9px + 4 * (100vw - 400px) / 800);
     font-weight: 700;
     border: 1px solid #8B0000;
     border-radius: 10px 10px 10px 0;
@@ -91,6 +91,9 @@ label.wrong:after {
 
 /* ==== BUTTONS ==== */
 .btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     max-height: 40px;
 	padding: 10px 25px;
 	background: var(--main-clr);
@@ -98,7 +101,7 @@ label.wrong:after {
 	border-radius: 10px;
 	color: var(--white);
     font-weight: 700;
-    font-size:calc(12px + 6 * (100vw - 400px) / 800);
+    font-size:calc(12px + 4 * (100vw - 400px) / 800);
 	box-shadow: 0 5px 10px rgba(0, 0, 0, .05);
 	transition: all 100ms linear;
 	cursor: pointer;
@@ -213,7 +216,7 @@ label.wrong:after {
     transition: all .2s ease;
     pointer-events: none;
 }
-.input_group input:focus + .label--input,
+.input_group input:focus-visible + .label--input,
 .input_group input:not(:placeholder-shown) + .label--input {
     margin-top: -20px;
     font-size: calc(10px + 4 * (100vw - 400px) / 800);
@@ -231,7 +234,7 @@ label.wrong:after {
 .input_group input::placeholder {
     opacity: 0;
 }
-.input_group input:focus {
+.input_group input:focus-visible {
     outline: none;
     border-bottom: 2px solid var(--main-clr);
 }
@@ -344,13 +347,17 @@ label.wrong:after {
         height: 25px;
     }
     .bloc__inner--params {
-        gap: 10px;
+        gap: 15px;
+    }
+    .input_group input:focus-visible + .label--input,
+    .input_group input:not(:placeholder-shown) + .label--input {
+        margin-top: -15px;
     }
     .input_group {
         width: 75%;
     }
     .input_group input {
-        height: 20px;
+        height: 25px;
     }
     .bloc__inner--result {
         padding: 5px 0;
