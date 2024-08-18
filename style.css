@@ -228,7 +228,7 @@ label.wrong:after {
 }
 @media (max-width: 992px) {
     .input_group input:focus + .label--input,
-    .input_group input:not(:placeholder-shown) + .label--input {
+    .input_group input:valid + .label--input {
         margin-top: -15px;
         font-size: calc(10px + 4 * (100vw - 400px) / 800);
         font-weight: 700;
