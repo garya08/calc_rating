@@ -346,7 +346,7 @@ label.wrong:after {
         height: 25px;
     }
     .input_group input:focus + .label--input,
-    .input_group input:valid + .label--input {
+    .input_group input:not(:placeholder-shown) + .label--input {
         margin-top: -15px;
     }
     .bloc__inner--params {
