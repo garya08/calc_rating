@@ -150,6 +150,19 @@ label.wrong:after {
     justify-content: space-between;
     margin: 0 auto;
 }
+.favicon {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 50px;
+    aspect-ratio: 1;
+}
+@media (max-width: 768px) {
+    .favicon {
+        width: 40px;
+        border-bottom-right-radius: 20px;
+    }
+}
 .red {
     color: var(--red);
     font-weight: 700;
