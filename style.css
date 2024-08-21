@@ -4,12 +4,12 @@
     --black: #333;
     --border: #999;
     --dark-bg: #00551D;
-    --light-bg: #00551c59;
+    --light-bg: #2b81489c;
     --white: snow;
     --orange: #d7ff00;
     --yellow: #ffa800;
-    --blue: #0000ff;
-    --red: #ff0000;
+    --blue: #312efc;
+    --red: #c50000;
 }
 * {
     margin: 0;
@@ -53,12 +53,17 @@ input:disabled {
     background-color: #ddd;
 }
 input:focus {
-    border-color: #312efc;
+    border-color: var(--blue);
 }
-input.wrong,
-input.wrong:focus {
-    border-color: red;
+label.wrong > input,
+label.wrong > input:focus {
+    border-color: var(--red);
 }
+label.done > input {
+    color: var(--main-clr);
+    font-weight: 700;
+}
+
 
 /* ==== LABEL ==== */
 label {
@@ -112,10 +117,15 @@ label.wrong:after {
 	transform: scale(.95);
 }
 .btn:disabled {
-	background: var(--main-light);
+	background: var(--light-bg);
 	cursor: not-allowed;
 }
-
+.btn--clear {
+    background-color: var(--red);
+    position: absolute;
+    right: 5%;
+    top: 10px;
+}
 
 /* -------------- STYLES BLOC ---------------- */
 .wrapper {
@@ -152,7 +162,6 @@ label.wrong:after {
     color: var(--orange);
     font-weight: 700;
 }
-
 
 /* ----------------------------- BLOC_INFO --------------------------- */
 .bloc--info {

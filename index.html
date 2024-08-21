@@ -13,7 +13,7 @@
 </head>
 <body>
     <div class="wrapper">
-        
+        <button class="btn btn--clear" type="button">Clear</button>
         <h1>Калькулятор рейтинга</h1>
         <!-- информационный блок -->
         <div class="bloc bloc--info">
@@ -47,15 +47,15 @@
             <div class="container">
                 <div class="bloc__inner bloc__inner--params">
                     <div class="input_group">
-                        <input type="text" id="avg" placeholder="" inputmode="numeric" tabindex="1">
+                        <input class="params" type="text" id="avg" placeholder="" inputmode="numeric" tabindex="1">
                         <label class="label--input">Средняя сумма чека</label>
                     </div>
                     <div class="input_group">
-                        <input type="text" id="serviceCount" placeholder="" inputmode="numeric" tabindex="2">
+                        <input class="params" type="text" id="serviceCount" placeholder="" inputmode="numeric" tabindex="2">
                         <label class="label--input">Кол-во заказов с автоматической оценкой</label>
                     </div>
                     <div class="input_group">
-                        <input type="text" id="clientCount" placeholder="" inputmode="numeric" tabindex="3">
+                        <input class="params" type="text" id="clientCount" placeholder="" inputmode="numeric" tabindex="3">
                         <label class="label--input">Кол-во заказов с оценкой от клиента</label>
                     </div>
                 </div>
@@ -70,7 +70,7 @@
                     <label class="result_label">Рейтинг
                         <input class="result_input" type="text" name="result" id="result" disabled>
                     </label>
-                    <button id="btn_result" class="btn" type="button" tabindex="16">Calculate</button>
+                    <button id="btn_result" class="btn" type="button" tabindex="16" disabled="true">Calculate</button>
                 </div>
             </div>
         </div>

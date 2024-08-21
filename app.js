@@ -1,5 +1,5 @@
 // ------------- КОНСТАНТЫ ------------- 
-const red = '#ff0000',
+const red = '#ff4a4a',
       main_clr = '#00822b';
 
 const maxLength = 4,
@@ -9,18 +9,20 @@ const maxLength = 4,
 
 // ------------- ОСНОВНЫЕ ЭЛЕМЕНТЫ СТРАНИЦЫ -------------  
 // Кол-во оценок Клиентов и Сервиса, Средний чек, поле результата, список элементов оценок клиентов и сервиса
-const avgInputEl = document.querySelector('#avg'),
+const inputs = document.querySelectorAll('input'),
+      avgInputEl = document.querySelector('#avg'),
       serviceCountEl = document.querySelector('#serviceCount'),
       clientCountEl = document.querySelector('#clientCount'),
       resultEl = document.querySelector('#result'),   // input результата
       btnResult = document.querySelector('#btn_result'),
-      serviceReviewsEl = document.querySelectorAll('.service_review'),  // список input автоматические оценки
-      clientReviewsEl = document.querySelectorAll('.client_review');  // список input оценки клиентов
+      btnClear = document.querySelector('.btn--clear'),
+      serviceReviewsList = document.querySelectorAll('.service_review'),  // список input автоматические оценки
+      clientReviewsList = document.querySelectorAll('.client_review');  // список input оценки клиентов
 
-      
+
 // ------------- СОБЫТИЯ СТРАНИЦЫ ------------- 
 // валидация ввода чисел во всех полях input на странице
-document.querySelectorAll('input').forEach((item) => {
+inputs.forEach((item) => {
     item.addEventListener('input', (e) => {
         e.target.value = e.target.value.replace(regEx, '');
         // ограничение длинны вводимых чисел
@@ -36,44 +38,19 @@ document.querySelectorAll('input').forEach((item) => {
         } 
     })
 });
-
-
-
-// ------------- ФУНКЦИИ ------------- 
-// функция отключения input если главное поле количества не заполнено или равно 0
-const toggleInputs = (countInput, inputsList) => 
-    countInput.addEventListener('input', (e)=> {
-                
-        for(let item of inputsList) {
-            if (e.target.value === '0' || e.target.value.length == 0) {
-                item.setAttribute('disabled', true);
-                item.value = 0;
-            } else {
-                item.removeAttribute('disabled');
-                item.value = ''
-            }
-        }
+// проверка на заполнение главных полей ввода => блокирование кнопки
+window.addEventListener('input', () => {
+    let full = true;
+    document.querySelectorAll('.params').forEach((item) => {
+        if(!item.value.length) full = false;
     })
-// функция для отслеживания ошибки превышения общего количества
-const wrongInputs = (inputsList, countInput) => inputsList.forEach((item) => {
-    item.addEventListener('input', (e)=> {
-        if(checkSumWrong(inputsList) > Number(countInput.value)) {
-            e.target.parentNode.classList.add('wrong');
-            e.target.classList.add('wrong');
-        } else {
-            e.target.parentNode.classList.remove('wrong');
-            e.target.classList.remove('wrong');
-        }
-        if (e.target.value == 0 || e.target.value == '') {
-            e.target.parentNode.classList.remove('wrong')
-            e.target.classList.remove('wrong')
-        }
-    })
+    if(full) btnResult.removeAttribute('disabled')
+    else btnResult.setAttribute('disabled', true)
 })
 // вычисление рейтинга
 btnResult.addEventListener('click', () => {
-    let service = calcReviews(serviceReviewsEl) * parseInt(avgInputEl.value);
-    let client = K * calcReviews(clientReviewsEl) * parseInt(avgInputEl.value);
+    let service = calcReviews(serviceReviewsList) * parseInt(avgInputEl.value);
+    let client = K * calcReviews(clientReviewsList) * parseInt(avgInputEl.value);
 
     let up =  service + client;
     let down = parseInt(avgInputEl.value) * (parseInt(serviceCountEl.value) + K * parseInt(clientCountEl.value));
@@ -82,6 +59,56 @@ btnResult.addEventListener('click', () => {
     
     resultEl.value = answer > 5 ? parseFloat('5').toFixed(2) : answer.toFixed(2);
     resultEl.style.color = answer > goodRating ? main_clr : red;
+})
+// очистка страницы
+btnClear.addEventListener('click', () => {
+    for (const element of inputs) {
+        element.value = '';
+    }
+    btnResult.setAttribute('disabled', true);
+    serviceReviewsList.forEach((item) => item.setAttribute('disabled', true));
+    clientReviewsList.forEach((item) => item.setAttribute('disabled', true));
+    document.querySelectorAll('.wrong').forEach((item) => item.classList.remove('wrong'));
+    document.querySelectorAll('.done').forEach((item) => item.classList.remove('done'));
+})
+
+
+// ------------- ФУНКЦИИ ------------- 
+// функция отключения input если главное поле количества не заполнено или равно 0
+const toggleInputs = (countInput, inputsList) => 
+    countInput.addEventListener('input', (e)=> {
+                
+        for(let item of inputsList) {
+            if (+e.target.value === 0) {
+                item.setAttribute('disabled', true);
+                item.value = 0;
+            } else {
+                item.removeAttribute('disabled');
+                item.value = '';
+            }
+        }
+    })
+    // функция состояний полей ввода
+const checkInputs = (list, count) => list.forEach((input) => {
+    input.addEventListener('input', (e) => {
+        let checkSum = checkSumWrong(list);
+        let commonSum = count.value;
+        if(checkSum > 0 && checkSum <= commonSum) {
+            list.forEach((item) => item.parentNode.classList.remove('wrong'));      // удаление класса wrong у всех
+            list.forEach((item) => item.parentNode.classList.remove('done'));      // удаление класса done у всех
+            chooseAttribute(list, false);
+            if(checkSum == commonSum) {
+                list.forEach((item) => {
+                    item.parentNode.classList.add('done'); 
+                    if(!item.value) item.setAttribute('disabled', true)
+                })
+            }
+        } else if(!checkSum <= 0) {
+            e.target.parentNode.classList.add('wrong');
+            chooseAttribute(list, true);
+            list.forEach((item) => item.parentNode.classList.remove('done'));      // удаление класса done у всех
+        }
+    })
 })
 
 // ====== ВСПОМОГАТЕЛЬНЫЕ ФУНКЦИИ ======
@@ -101,16 +128,27 @@ const calcReviews = (inputList) => {
     })
     return sum;
 }
+// функция для включения/отключения пустых или равных 0 полей input
+const chooseAttribute = (list, status) => {
+    if(status){
+        list.forEach((item) => {
+            if(+item.value === 0) item.setAttribute('disabled', true)
+        })
+    } else {
+        list.forEach((item) => {
+            if(+item.value === 0) item.removeAttribute('disabled')
+        })
+    }
+}
+
 
 
 
 // ------------- ВЫЗОВ НЕОБХОДИМЫХ ФУНКЦИЙ ------------- 
-toggleInputs(serviceCountEl, serviceReviewsEl)
-toggleInputs(clientCountEl, clientReviewsEl)
+toggleInputs(serviceCountEl, serviceReviewsList)
+toggleInputs(clientCountEl, clientReviewsList)
 
-wrongInputs(serviceReviewsEl, serviceCountEl);
-wrongInputs(clientReviewsEl, clientCountEl);
-
-
+checkInputs(serviceReviewsList, serviceCountEl);
+checkInputs(clientReviewsList, clientCountEl);
 
 
