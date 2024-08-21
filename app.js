@@ -143,7 +143,6 @@ const chooseAttribute = (list, status) => {
 
 
 
-
 // ------------- ВЫЗОВ НЕОБХОДИМЫХ ФУНКЦИЙ ------------- 
 toggleInputs(serviceCountEl, serviceReviewsList)
 toggleInputs(clientCountEl, clientReviewsList)
