@@ -287,8 +287,8 @@ label.wrong:after {
     border-bottom: 2px solid var(--main-clr);
     border-radius: 0;
 }
-.result_input:disabled {
-    background-color: var(--white);
+.result_input:focus {
+    border-color: var(--main-clr);
 }
 
 
