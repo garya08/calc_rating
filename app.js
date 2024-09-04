@@ -31,10 +31,12 @@ inputs.forEach((item) => {
         }
         
         // Проверка - клиент распределил все количество отзывов или нет
-        if(checkSumWrong(serviceReviewsList) == serviceCountEl.value && checkSumWrong(clientReviewsList) == clientCountEl.value) {
-            btnResult.removeAttribute('disabled')       // разблокировать кнопку Calculate
-        } else {
-            btnResult.setAttribute('disabled', true)    // заблокировать кнопку Calculate
+        if(serviceCountEl.value != 0 && clientCountEl.value != 0) {
+            if(checkSumWrong(serviceReviewsList) == serviceCountEl.value && checkSumWrong(clientReviewsList) == clientCountEl.value) {
+                btnResult.removeAttribute('disabled')       // разблокировать кнопку Calculate
+            } else {
+                btnResult.setAttribute('disabled', true)    // заблокировать кнопку Calculate
+            }
         }
     })
     // после изменения значения в input проверка если начинается с 0 => 0125, то обрезаем этот ноль
