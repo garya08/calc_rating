@@ -29,6 +29,13 @@ inputs.forEach((item) => {
         if (e.target.value.length > maxLength) {
             e.target.value = e.target.value.substring(0, maxLength);
         }
+        
+        // Проверка - клиент распределил все количество отзывов или нет
+        if(checkSumWrong(serviceReviewsList) == serviceCountEl.value && checkSumWrong(clientReviewsList) == clientCountEl.value) {
+            btnResult.removeAttribute('disabled')       // разблокировать кнопку Calculate
+        } else {
+            btnResult.setAttribute('disabled', true)    // заблокировать кнопку Calculate
+        }
     })
     // после изменения значения в input проверка если начинается с 0 => 0125, то обрезаем этот ноль
     item.addEventListener('change', (e)=> {
@@ -37,16 +44,17 @@ inputs.forEach((item) => {
             e.target.value = +e.target.value;  // использовали унарный плюс, который преобразовывает строку в число 
         } 
     })
+
 });
 // проверка на заполнение главных полей ввода => блокирование кнопки
-window.addEventListener('input', () => {
-    let full = true;
-    document.querySelectorAll('.params').forEach((item) => {
-        if(!item.value.length) full = false;
-    })
-    if(full) btnResult.removeAttribute('disabled')
-    else btnResult.setAttribute('disabled', true)
-})
+// window.addEventListener('input', () => {
+//     let full = true;
+//     document.querySelectorAll('.params').forEach((item) => {
+//         if(!item.value.length) full = false;
+//     })
+//     if(full) btnResult.removeAttribute('disabled')
+//     else btnResult.setAttribute('disabled', true)
+// })
 // вычисление рейтинга
 btnResult.addEventListener('click', () => {
     let service = calcReviews(serviceReviewsList) * parseInt(avgInputEl.value);
@@ -88,7 +96,7 @@ const toggleInputs = (countInput, inputsList) =>
             }
         }
     })
-    // функция состояний полей ввода
+// функция состояний полей ввода
 const checkInputs = (list, count) => list.forEach((input) => {
     input.addEventListener('input', (e) => {
         let checkSum = checkSumWrong(list);
