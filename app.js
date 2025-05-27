@@ -161,3 +161,6 @@ checkInputs(serviceReviewsList, serviceCountEl);
 checkInputs(clientReviewsList, clientCountEl);
 
 
+function closeDisclaimer() {
+    document.querySelector('.disclaimer').style.display = "none";
+}
