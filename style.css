@@ -11,6 +11,18 @@
     --blue: #312efc;
     --red: #c50000;
 }
+th:has(.forFoodster) {
+    position: relative;
+}
+.forFoodster {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    /* background-color: red; */
+    color: transparent;
+    padding: 5px 50px;
+    transform: translateX(-50%);
+}
 * {
     margin: 0;
     padding: 0;
@@ -494,4 +506,33 @@ label.wrong:after {
     right: 5px;
     background-color: transparent;
     border: none;
+}
+
+
+#paste-target {
+    height: 100%;
+    width: 100%;
+    padding: 10px 15px;
+    resize: none;
+    border-radius: 10px;
+    border: 1px solid #00822b;
+    scrollbar-width: thin;
+    scrollbar-color: #00822b #ececec;
+}
+.fileImport {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+}
+.fileImport > .bloc,
+.fileImport > .bloc > .container {
+    height: 100%;
+}
+.fileImport > .bloc--params {
+    flex-grow: 3;
+}
+.fileImport > .result {
+    height: auto;
+    padding: 25px 0;
 }

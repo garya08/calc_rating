@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="images/favicon.ico" type="image/x-icon">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="style.css">
+    <title>Калькулятор рейтинга</title>
+</head>
+<body>
+    <a href="/">
+        <img src="images/favicon.jpeg" alt="favicon" class="favicon">
+    </a>
+    <div class="wrapper">
+        <button class="btn btn--clear" type="button">Clear</button>
+        <h1>Калькулятор рейтинга</h1>
+        <!-- информационный блок -->
+        <div class="bloc bloc--info">
+            <div class="container">
+                <h2>Константы для вычислений</h2>
+                <div class="bloc__inner">
+                    <table>
+                        <tr>
+                            <th>Правило</th>
+                            <th>Значения</th>
+                        </tr>
+                        <tr>
+                            <td>Рейтинг ресторана определяется исходя из оценок за последние <span class="blue">M</span> месяцев</td>
+                            <td class="blue">M = 3</td>
+                        </tr>
+                        <tr>
+                            <td>Оценки пользователей в <span class="red">K</span> раз сильнее</td>
+                            <td class="red">K =	5</td>
+                        </tr>
+                        <tr>
+                            <td>Округляем до <span class="yellow">2</span> знаков после запятой</td>
+                            <td class="yellow">ROUND 2</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <div class="fileImport">
+            <!-- блок параметров -->
+            <div class="bloc bloc--params">
+                <div class="container">
+                    <textarea class="params" id="paste-target" tabindex="1" autofocus></textarea>
+                </div>
+            </div>
+    
+            <!-- результирующий блок -->
+             <hr>
+            <div class="bloc result">
+                <div class="container">
+                    <div class="bloc__inner bloc__inner--result">
+                        <label class="result_label">Рейтинг
+                            <input class="result_input" type="text" name="result" id="result" readonly>
+                        </label>
+                        <button id="btn_result" class="btn" type="button" tabindex="16" disabled="true">Calculate</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script src="fileImport.js"></script>
+
+</body>
+</html>
